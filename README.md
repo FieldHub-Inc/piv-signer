@@ -130,6 +130,12 @@ Scripts/
 - Counter-signing existing `.p7m` files (Apple's API does not support
   this; would require a hand-written CMS encoder).
 
+## Privacy
+
+PIV Signer does not collect, transmit, or share any personal data.
+Everything happens locally on your Mac. See [PRIVACY.md](PRIVACY.md)
+for the full policy.
+
 ## License
 
 Licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE)
