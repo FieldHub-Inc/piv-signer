@@ -1,6 +1,14 @@
 #!/bin/bash
 # Build PIV Signer.app bundle from the Swift package binary.
-# Usage: ./Scripts/build-app.sh [release|debug]   (default: release)
+# Usage:
+#   ./Scripts/build-app.sh [release|debug]
+#   SIGN_IDENTITY="Developer ID Application: ..." ./Scripts/build-app.sh
+#
+# Env vars:
+#   SIGN_IDENTITY  Codesign identity. If unset, the bundle is unsigned.
+#                  Use "Developer ID Application: ..." for outside-store
+#                  notarization, or "Apple Distribution: ..." for Mac App
+#                  Store submission.
 
 set -euo pipefail
 
@@ -33,8 +41,9 @@ mkdir -p "$APP_DIR/Contents/Resources"
 
 cp "$EXEC" "$APP_DIR/Contents/MacOS/PivSigner"
 cp "$ICON_SRC" "$APP_DIR/Contents/Resources/AppIcon.icns"
+cp "$ROOT/PrivacyInfo.xcprivacy" "$APP_DIR/Contents/Resources/PrivacyInfo.xcprivacy"
 
-# Bundled SwiftPM resources (Localizable.strings, etc.) — copy module bundle if present
+# Bundled SwiftPM resources (Localizable.strings, etc.)
 MODULE_BUNDLE="$BIN_PATH/PivSigner_PivSigner.bundle"
 if [ -d "$MODULE_BUNDLE" ]; then
     cp -R "$MODULE_BUNDLE" "$APP_DIR/Contents/Resources/"
@@ -55,6 +64,8 @@ cat > "$APP_DIR/Contents/Info.plist" <<EOF
     <string>$APP_NAME</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
     <key>CFBundleShortVersionString</key>
     <string>$VERSION</string>
     <key>CFBundleVersion</key>
@@ -63,10 +74,18 @@ cat > "$APP_DIR/Contents/Info.plist" <<EOF
     <string>AppIcon</string>
     <key>LSMinimumSystemVersion</key>
     <string>13.0</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
     <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSSupportsAutomaticTermination</key>
+    <true/>
+    <key>NSSupportsSuddenTermination</key>
     <true/>
     <key>NSHumanReadableCopyright</key>
     <string>© 2026 FieldHub Inc. Apache 2.0.</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleLocalizations</key>
@@ -79,8 +98,38 @@ cat > "$APP_DIR/Contents/Info.plist" <<EOF
 </plist>
 EOF
 
-# refresh icon cache so Finder picks up the new icon immediately
 touch "$APP_DIR"
+
+# Optional code signing
+if [ -n "${SIGN_IDENTITY:-}" ]; then
+    ENTITLEMENTS="$ROOT/PivSigner.entitlements"
+    [ -f "$ENTITLEMENTS" ] || { echo "Missing $ENTITLEMENTS"; exit 1; }
+
+    echo "▸ Signing with: $SIGN_IDENTITY"
+
+    # Sign nested resource bundles first (no entitlements, no hardened runtime
+    # is required for resource-only bundles, but we do it for verify --deep)
+    if [ -d "$APP_DIR/Contents/Resources/PivSigner_PivSigner.bundle" ]; then
+        codesign --force --options runtime --timestamp \
+            --sign "$SIGN_IDENTITY" \
+            "$APP_DIR/Contents/Resources/PivSigner_PivSigner.bundle"
+    fi
+
+    # Sign the main executable
+    codesign --force --options runtime --timestamp \
+        --sign "$SIGN_IDENTITY" \
+        "$APP_DIR/Contents/MacOS/PivSigner"
+
+    # Sign the bundle with entitlements
+    codesign --force --options runtime --timestamp \
+        --entitlements "$ENTITLEMENTS" \
+        --sign "$SIGN_IDENTITY" \
+        "$APP_DIR"
+
+    echo "▸ Verifying signature…"
+    codesign --verify --deep --strict --verbose=2 "$APP_DIR"
+    echo "✓ Signed"
+fi
 
 echo "✓ Built $APP_DIR"
 echo "  Open with: open '$APP_DIR'"

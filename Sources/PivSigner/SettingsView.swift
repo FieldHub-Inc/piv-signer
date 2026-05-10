@@ -232,7 +232,7 @@ struct ProfileEditor: View {
         panel.allowsMultipleSelection = false
         panel.prompt = L.s("button.choose")
         if panel.runModal() == .OK, let url = panel.url,
-           let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
+           let bookmark = SignOptions.makeBookmark(for: url) {
             profile.options.output = .folder(bookmark: bookmark)
         }
     }

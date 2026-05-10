@@ -163,12 +163,26 @@ enum SignerCore {
         var signed: CFData?
         try check(CMSEncoderCopyEncodedContent(encoder, &signed), .sign)
 
-        let outURL = options.outputURL(for: fileURL)
-        try FileManager.default.createDirectory(
-            at: outURL.deletingLastPathComponent(),
-            withIntermediateDirectories: true
-        )
-        try (signed! as Data).write(to: outURL)
+        return try writeOutput(signed! as Data, source: fileURL, options: options)
+    }
+
+    private static func writeOutput(_ data: Data, source: URL, options: SignOptions) throws -> URL {
+        let outURL = options.outputURL(for: source)
+        let parent = outURL.deletingLastPathComponent()
+
+        let scopedFolder: URL? = {
+            if case .folder(let bookmark) = options.output {
+                return SignOptions.resolve(bookmark: bookmark)
+            }
+            return nil
+        }()
+        let didStartScope = scopedFolder?.startAccessingSecurityScopedResource() ?? false
+        defer {
+            if didStartScope { scopedFolder?.stopAccessingSecurityScopedResource() }
+        }
+
+        try FileManager.default.createDirectory(at: parent, withIntermediateDirectories: true)
+        try data.write(to: outURL)
         return outURL
     }
 

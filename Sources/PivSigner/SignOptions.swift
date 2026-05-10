@@ -75,9 +75,17 @@ struct SignOptions: Codable, Equatable {
         var stale = false
         return try? URL(
             resolvingBookmarkData: bookmark,
-            options: [.withoutUI],
+            options: [.withSecurityScope],
             relativeTo: nil,
             bookmarkDataIsStale: &stale
+        )
+    }
+
+    static func makeBookmark(for url: URL) -> Data? {
+        try? url.bookmarkData(
+            options: [.withSecurityScope],
+            includingResourceValuesForKeys: nil,
+            relativeTo: nil
         )
     }
 }
