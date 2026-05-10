@@ -1,0 +1,92 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "Ondertekenen";
+"mode.verify" = "Verifiëren";
+
+"card.title.empty" = "Plaats je PIV-smartcard";
+"card.title.ready" = "Smartcard klaar";
+"card.subtitle.empty" = "Geen certificaat gedetecteerd";
+"card.subtitle.validUntil" = "Geldig tot %@";
+"card.refresh" = "Vernieuwen";
+
+"cert.picker.label" = "Certificaat";
+"cert.details" = "Certificaatgegevens";
+"cert.details.button" = "Details…";
+
+"drop.sign.title" = "Sleep een of meer bestanden om te ondertekenen";
+"drop.verify.title" = "Sleep een .p7m-bestand om te verifiëren";
+"drop.subtitle" = "of klik om te kiezen";
+"drop.files.count" = "%d bestanden geselecteerd";
+
+"file.size" = "Grootte: %@";
+
+"options.title" = "Ondertekeningsopties";
+
+"sign.profile.label" = "Profiel";
+"sign.profile.edit" = "Profielen bewerken…";
+
+"settings.section.profiles" = "Profielen";
+
+"profile.default.name" = "Standaard";
+"profile.untitled" = "Nieuw profiel";
+"profile.empty" = "Selecteer of maak een profiel";
+"profile.add" = "Profiel toevoegen";
+"profile.duplicate" = "Profiel dupliceren";
+"profile.delete" = "Profiel verwijderen";
+"profile.name" = "Naam";
+
+"options.format" = "Formaat";
+"options.format.attached" = "Ingesloten (.p7m)";
+"options.format.detached" = "Losgekoppeld (.p7s)";
+"options.hash" = "Hash";
+"options.chain" = "Certificaten";
+"options.chain.signer" = "Alleen ondertekenaar";
+"options.chain.intermediates" = "+ Tussenliggende";
+"options.chain.full" = "+ Hoofd";
+"options.output" = "Opslaan in";
+"options.output.adjacent" = "Naast bronbestand";
+"options.output.folder" = "Aangepaste map…";
+"options.output.folderName" = "Map: %@";
+"options.timestamp" = "RFC 3161-tijdstempel";
+"options.timestamp.soon" = "Binnenkort beschikbaar";
+
+"button.sign" = "Onderteken";
+"button.signing" = "Bezig met ondertekenen…";
+"button.verify" = "Verifieer";
+"button.verifying" = "Bezig met verifiëren…";
+"button.showInFinder" = "Toon in Finder";
+"button.savePayload" = "Origineel bestand opslaan…";
+"button.choose" = "Kiezen…";
+"button.clear" = "Wissen";
+
+"result.signed.title" = "Bestand ondertekend";
+"result.signed.subtitle" = "Opgeslagen naast het origineel";
+"result.batch.summary" = "%d ondertekend, %d mislukt";
+"result.batch.allOk" = "Alle %d bestanden ondertekend";
+"result.failure" = "Mislukt: %@";
+
+"verify.title.valid" = "Handtekening is geldig";
+"verify.title.invalid" = "Handtekening is NIET geldig";
+"verify.signer" = "Ondertekenaar";
+"verify.issuer" = "Uitgever";
+"verify.signedAt" = "Ondertekend op";
+"verify.payloadSize" = "Ingesloten inhoud";
+"verify.signers" = "Ondertekenaars";
+"verify.notTrusted" = "Vertrouwensketen kon niet worden geverifieerd";
+
+"error.readFile" = "Kan bestand niet lezen: %@";
+"error.signing" = "Ondertekenen mislukt: %@";
+"error.verifying" = "Verifiëren mislukt: %@";
+"error.notCMS" = "Dit bestand is geen geldige CMS / p7m-container";
+"error.noContent" = "Geen ingesloten inhoud in de handtekening";
+
+"menu.openFile" = "Bestand openen…";
+"menu.about" = "Over PIV Signer";
+
+"about.tagline" = "Onderteken en verifieer bestanden met een PIV-smartcard, native op macOS. Compatibel met YubiKey en andere PIV-tokens.";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "Versie %@";
+"about.author" = "door Viacheslav «Vic» Bukhantsov";
+"about.license" = "Licentie";
+"about.viewSource" = "Broncode";
+"about.licenseShort" = "Onder de Apache License 2.0";

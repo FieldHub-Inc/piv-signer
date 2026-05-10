@@ -1,0 +1,92 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "签名";
+"mode.verify" = "验证";
+
+"card.title.empty" = "请插入 PIV 智能卡";
+"card.title.ready" = "智能卡已就绪";
+"card.subtitle.empty" = "未检测到证书";
+"card.subtitle.validUntil" = "有效期至 %@";
+"card.refresh" = "刷新";
+
+"cert.picker.label" = "证书";
+"cert.details" = "证书详情";
+"cert.details.button" = "详情…";
+
+"drop.sign.title" = "拖入要签名的文件";
+"drop.verify.title" = "拖入要验证的 .p7m 文件";
+"drop.subtitle" = "或点击选择";
+"drop.files.count" = "已选 %d 个文件";
+
+"file.size" = "大小:%@";
+
+"options.title" = "签名选项";
+
+"sign.profile.label" = "配置文件";
+"sign.profile.edit" = "编辑配置文件…";
+
+"settings.section.profiles" = "配置文件";
+
+"profile.default.name" = "默认";
+"profile.untitled" = "新建配置文件";
+"profile.empty" = "请选择或创建配置文件";
+"profile.add" = "添加配置文件";
+"profile.duplicate" = "复制配置文件";
+"profile.delete" = "删除配置文件";
+"profile.name" = "名称";
+
+"options.format" = "格式";
+"options.format.attached" = "嵌入式 (.p7m)";
+"options.format.detached" = "分离式 (.p7s)";
+"options.hash" = "哈希";
+"options.chain" = "证书";
+"options.chain.signer" = "仅签名者证书";
+"options.chain.intermediates" = "+ 中间证书";
+"options.chain.full" = "+ 根证书";
+"options.output" = "保存到";
+"options.output.adjacent" = "源文件旁边";
+"options.output.folder" = "自定义文件夹…";
+"options.output.folderName" = "文件夹:%@";
+"options.timestamp" = "RFC 3161 时间戳";
+"options.timestamp.soon" = "即将推出";
+
+"button.sign" = "签名";
+"button.signing" = "正在签名…";
+"button.verify" = "验证";
+"button.verifying" = "正在验证…";
+"button.showInFinder" = "在 Finder 中显示";
+"button.savePayload" = "保存原始文件…";
+"button.choose" = "选择…";
+"button.clear" = "清除";
+
+"result.signed.title" = "文件已签名";
+"result.signed.subtitle" = "已保存在原始文件旁边";
+"result.batch.summary" = "已签名 %d 个,失败 %d 个";
+"result.batch.allOk" = "全部 %d 个文件已签名";
+"result.failure" = "失败:%@";
+
+"verify.title.valid" = "签名有效";
+"verify.title.invalid" = "签名无效";
+"verify.signer" = "签名者";
+"verify.issuer" = "颁发者";
+"verify.signedAt" = "签名时间";
+"verify.payloadSize" = "嵌入内容";
+"verify.signers" = "签名者";
+"verify.notTrusted" = "无法验证信任链";
+
+"error.readFile" = "无法读取文件:%@";
+"error.signing" = "签名失败:%@";
+"error.verifying" = "验证失败:%@";
+"error.notCMS" = "此文件不是有效的 CMS / p7m 容器";
+"error.noContent" = "签名中没有嵌入内容";
+
+"menu.openFile" = "打开文件…";
+"menu.about" = "关于 PIV Signer";
+
+"about.tagline" = "使用 PIV 智能卡在 macOS 上原生签名和验证文件。兼容 YubiKey 和其他 PIV 令牌。";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "版本 %@";
+"about.author" = "作者:Viacheslav «Vic» Bukhantsov";
+"about.license" = "许可证";
+"about.viewSource" = "查看源代码";
+"about.licenseShort" = "依据 Apache License 2.0 授权";

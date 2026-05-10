@@ -1,0 +1,92 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "Firma";
+"mode.verify" = "Verifica";
+
+"card.title.empty" = "Inserisci la smart card PIV";
+"card.title.ready" = "Smart card pronta";
+"card.subtitle.empty" = "Nessun certificato rilevato";
+"card.subtitle.validUntil" = "Valido fino al %@";
+"card.refresh" = "Aggiorna";
+
+"cert.picker.label" = "Certificato";
+"cert.details" = "Dettagli del certificato";
+"cert.details.button" = "Dettagli…";
+
+"drop.sign.title" = "Trascina uno o più file da firmare";
+"drop.verify.title" = "Trascina un file .p7m da verificare";
+"drop.subtitle" = "oppure clicca per selezionare";
+"drop.files.count" = "%d file selezionati";
+
+"file.size" = "Dimensione: %@";
+
+"options.title" = "Opzioni di firma";
+
+"sign.profile.label" = "Profilo";
+"sign.profile.edit" = "Modifica profili…";
+
+"settings.section.profiles" = "Profili";
+
+"profile.default.name" = "Predefinito";
+"profile.untitled" = "Nuovo profilo";
+"profile.empty" = "Seleziona o crea un profilo";
+"profile.add" = "Aggiungi profilo";
+"profile.duplicate" = "Duplica profilo";
+"profile.delete" = "Elimina profilo";
+"profile.name" = "Nome";
+
+"options.format" = "Formato";
+"options.format.attached" = "Incorporato (.p7m)";
+"options.format.detached" = "Separato (.p7s)";
+"options.hash" = "Hash";
+"options.chain" = "Certificati";
+"options.chain.signer" = "Solo firmatario";
+"options.chain.intermediates" = "+ Intermedi";
+"options.chain.full" = "+ Radice";
+"options.output" = "Salva in";
+"options.output.adjacent" = "Accanto al file originale";
+"options.output.folder" = "Cartella personalizzata…";
+"options.output.folderName" = "Cartella: %@";
+"options.timestamp" = "Marca temporale RFC 3161";
+"options.timestamp.soon" = "Prossimamente";
+
+"button.sign" = "Firma";
+"button.signing" = "Firma in corso…";
+"button.verify" = "Verifica";
+"button.verifying" = "Verifica in corso…";
+"button.showInFinder" = "Mostra nel Finder";
+"button.savePayload" = "Salva file originale…";
+"button.choose" = "Scegli…";
+"button.clear" = "Cancella";
+
+"result.signed.title" = "File firmato";
+"result.signed.subtitle" = "Salvato accanto all'originale";
+"result.batch.summary" = "%d firmati, %d falliti";
+"result.batch.allOk" = "Tutti i %d file firmati";
+"result.failure" = "Errore: %@";
+
+"verify.title.valid" = "Firma valida";
+"verify.title.invalid" = "Firma NON valida";
+"verify.signer" = "Firmatario";
+"verify.issuer" = "Emittente";
+"verify.signedAt" = "Firmato il";
+"verify.payloadSize" = "Contenuto incorporato";
+"verify.signers" = "Firmatari";
+"verify.notTrusted" = "Impossibile verificare la catena di fiducia";
+
+"error.readFile" = "Impossibile leggere il file: %@";
+"error.signing" = "Firma non riuscita: %@";
+"error.verifying" = "Verifica non riuscita: %@";
+"error.notCMS" = "Questo file non è un contenitore CMS / p7m valido";
+"error.noContent" = "Nessun contenuto incorporato nella firma";
+
+"menu.openFile" = "Apri file…";
+"menu.about" = "Informazioni su PIV Signer";
+
+"about.tagline" = "Firma e verifica file con una smart card PIV, in modo nativo su macOS. Compatibile con YubiKey e altri token PIV.";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "Versione %@";
+"about.author" = "di Viacheslav «Vic» Bukhantsov";
+"about.license" = "Licenza";
+"about.viewSource" = "Codice sorgente";
+"about.licenseShort" = "Distribuito sotto licenza Apache License 2.0";

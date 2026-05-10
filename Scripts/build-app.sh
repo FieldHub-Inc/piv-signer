@@ -91,8 +91,18 @@ cat > "$APP_DIR/Contents/Info.plist" <<EOF
     <key>CFBundleLocalizations</key>
     <array>
         <string>en</string>
+        <string>de</string>
+        <string>es</string>
+        <string>fr</string>
+        <string>it</string>
+        <string>ja</string>
+        <string>ko</string>
+        <string>nl</string>
+        <string>pl</string>
+        <string>pt-BR</string>
         <string>ru</string>
         <string>uk</string>
+        <string>zh-Hans</string>
     </array>
 </dict>
 </plist>

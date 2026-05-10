@@ -30,8 +30,10 @@ see through CryptoTokenKit.
     (security-scoped bookmark)
 - Batch signing: drop several files at once, get one PIN prompt for the
   whole batch, see per-file success or failure.
-- Localized in English, Russian and Ukrainian. Adding a locale is just
-  another `.lproj/Localizable.strings`.
+- Localized in 13 languages: English, German, Spanish, French, Italian,
+  Japanese, Korean, Dutch, Polish, Portuguese (Brazil), Russian,
+  Ukrainian, and Simplified Chinese. Adding a locale is just another
+  `.lproj/Localizable.strings`.
 - macOS 13 Ventura or newer.
 
 ## Build and run

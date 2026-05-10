@@ -1,0 +1,92 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "서명";
+"mode.verify" = "검증";
+
+"card.title.empty" = "PIV 스마트카드를 삽입하세요";
+"card.title.ready" = "스마트카드 준비 완료";
+"card.subtitle.empty" = "인증서가 감지되지 않았습니다";
+"card.subtitle.validUntil" = "유효 기간: %@";
+"card.refresh" = "새로 고침";
+
+"cert.picker.label" = "인증서";
+"cert.details" = "인증서 세부 정보";
+"cert.details.button" = "세부 정보…";
+
+"drop.sign.title" = "서명할 파일을 끌어다 놓으세요";
+"drop.verify.title" = "검증할 .p7m 파일을 끌어다 놓으세요";
+"drop.subtitle" = "또는 클릭하여 선택";
+"drop.files.count" = "%d개 파일 선택됨";
+
+"file.size" = "크기: %@";
+
+"options.title" = "서명 옵션";
+
+"sign.profile.label" = "프로필";
+"sign.profile.edit" = "프로필 편집…";
+
+"settings.section.profiles" = "프로필";
+
+"profile.default.name" = "기본값";
+"profile.untitled" = "새 프로필";
+"profile.empty" = "프로필을 선택하거나 만드세요";
+"profile.add" = "프로필 추가";
+"profile.duplicate" = "프로필 복제";
+"profile.delete" = "프로필 삭제";
+"profile.name" = "이름";
+
+"options.format" = "형식";
+"options.format.attached" = "포함 (.p7m)";
+"options.format.detached" = "분리 (.p7s)";
+"options.hash" = "해시";
+"options.chain" = "인증서";
+"options.chain.signer" = "서명자만";
+"options.chain.intermediates" = "+ 중간 인증서";
+"options.chain.full" = "+ 루트";
+"options.output" = "저장 위치";
+"options.output.adjacent" = "원본 파일 옆";
+"options.output.folder" = "사용자 폴더…";
+"options.output.folderName" = "폴더: %@";
+"options.timestamp" = "RFC 3161 타임스탬프";
+"options.timestamp.soon" = "출시 예정";
+
+"button.sign" = "서명";
+"button.signing" = "서명 중…";
+"button.verify" = "검증";
+"button.verifying" = "검증 중…";
+"button.showInFinder" = "Finder에서 보기";
+"button.savePayload" = "원본 파일 저장…";
+"button.choose" = "선택…";
+"button.clear" = "지우기";
+
+"result.signed.title" = "파일이 서명되었습니다";
+"result.signed.subtitle" = "원본 옆에 저장되었습니다";
+"result.batch.summary" = "%d개 서명됨, %d개 실패";
+"result.batch.allOk" = "%d개 파일 모두 서명됨";
+"result.failure" = "실패: %@";
+
+"verify.title.valid" = "서명이 유효합니다";
+"verify.title.invalid" = "서명이 유효하지 않습니다";
+"verify.signer" = "서명자";
+"verify.issuer" = "발행자";
+"verify.signedAt" = "서명 시각";
+"verify.payloadSize" = "포함된 콘텐츠";
+"verify.signers" = "서명자";
+"verify.notTrusted" = "신뢰 체인을 확인할 수 없습니다";
+
+"error.readFile" = "파일을 읽을 수 없습니다: %@";
+"error.signing" = "서명 실패: %@";
+"error.verifying" = "검증 실패: %@";
+"error.notCMS" = "이 파일은 유효한 CMS / p7m 컨테이너가 아닙니다";
+"error.noContent" = "서명에 포함된 콘텐츠가 없습니다";
+
+"menu.openFile" = "파일 열기…";
+"menu.about" = "PIV Signer 정보";
+
+"about.tagline" = "PIV 스마트카드를 사용하여 macOS에서 네이티브로 파일에 서명하고 검증합니다. YubiKey 및 기타 PIV 토큰과 호환됩니다.";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "버전 %@";
+"about.author" = "제작: Viacheslav «Vic» Bukhantsov";
+"about.license" = "라이선스";
+"about.viewSource" = "소스 코드";
+"about.licenseShort" = "Apache License 2.0에 따라 배포됨";
