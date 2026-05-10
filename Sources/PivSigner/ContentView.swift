@@ -59,13 +59,12 @@ struct SignView: View {
     let identities: [SmartCardIdentity]
     @Binding var selectedIdentity: SmartCardIdentity?
 
+    @ObservedObject private var profileStore: ProfileStore = .shared
+
     @State private var fileURLs: [URL] = []
     @State private var isSigning = false
     @State private var batchResult: BatchSignResult?
     @State private var errorMessage: String?
-
-    @State private var preset: SignPreset = PreferenceStore.loadSelectedPreset()
-    @State private var options: SignOptions = PreferenceStore.loadSelectedPreset().options()
 
     var body: some View {
         Form {
@@ -84,7 +83,7 @@ struct SignView: View {
                 }
             }
 
-            optionsSection
+            profileSection
 
             Section {
                 MultiFileDropZone(urls: $fileURLs, titleKey: "drop.sign.title")
@@ -110,114 +109,72 @@ struct SignView: View {
         .safeAreaInset(edge: .bottom) { bottomBar }
     }
 
-    // MARK: Options section
+    // MARK: Profile section
 
-    @ViewBuilder private var optionsSection: some View {
+    @ViewBuilder private var profileSection: some View {
         Section(L.s("options.title")) {
-            Picker(L.s("options.preset"), selection: $preset) {
-                ForEach(SignPreset.allCases) { p in
-                    Text(L.s(p.localizationKey)).tag(p)
-                }
-            }
-            .onChange(of: preset) { newValue in
-                PreferenceStore.saveSelectedPreset(newValue)
-                if newValue != .custom {
-                    options = newValue.options()
-                }
-            }
-
-            Picker(L.s("options.format"), selection: $options.attached) {
-                Text(L.s("options.format.attached")).tag(true)
-                Text(L.s("options.format.detached")).tag(false)
-            }
-            .pickerStyle(.segmented)
-
-            Picker(L.s("options.hash"), selection: $options.hash) {
-                ForEach(SignOptions.Hash.allCases) { h in
-                    Text(h.label).tag(h)
-                }
-            }
-
-            Picker(L.s("options.chain"), selection: $options.chain) {
-                ForEach(SignOptions.Chain.allCases) { c in
-                    Text(L.s(c.localizationKey)).tag(c)
-                }
-            }
-
-            outputControl
-
-            timestampControl
-        }
-        .onChange(of: options) { newValue in
-            let matched = SignPreset.match(newValue)
-            if matched != preset {
-                preset = matched
-            }
-            if matched == .custom {
-                PreferenceStore.saveCustomOptions(newValue)
-            }
-        }
-    }
-
-    @ViewBuilder private var outputControl: some View {
-        let isAdjacent = options.output.isAdjacent
-        Picker(L.s("options.output"), selection: Binding<Bool>(
-            get: { isAdjacent },
-            set: { adjacent in
-                if adjacent {
-                    options.output = .adjacent
-                } else {
-                    pickOutputFolder()
-                }
-            }
-        )) {
-            Text(L.s("options.output.adjacent")).tag(true)
-            Text(L.s("options.output.folder")).tag(false)
-        }
-
-        if case .folder(let bookmark) = options.output,
-           let url = SignOptions.resolve(bookmark: bookmark) {
             HStack {
-                Image(systemName: "folder")
-                    .foregroundStyle(.secondary)
-                Text(L.s("options.output.folderName", url.path))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .truncationMode(.middle)
-                Spacer()
-                Button(L.s("button.choose"), action: pickOutputFolder)
-                    .controlSize(.small)
+                Picker(L.s("sign.profile.label"), selection: Binding<UUID?>(
+                    get: { profileStore.selectedID },
+                    set: { profileStore.selectedID = $0 }
+                )) {
+                    ForEach(profileStore.profiles) { p in
+                        Text(p.name).tag(Optional(p.id))
+                    }
+                }
+                Button(L.s("sign.profile.edit")) {
+                    openSettings()
+                }
+                .controlSize(.small)
+            }
+
+            if let p = profileStore.selected {
+                profileSummary(p.options)
             }
         }
     }
 
-    @ViewBuilder private var timestampControl: some View {
-        HStack {
-            Toggle(L.s("options.timestamp"), isOn: $options.addTimestamp)
-                .disabled(true)
+    @ViewBuilder private func profileSummary(_ opts: SignOptions) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            summaryRow(label: L.s("options.format"),
+                       value: L.s(opts.attached ? "options.format.attached" : "options.format.detached"))
+            summaryRow(label: L.s("options.hash"), value: opts.hash.label)
+            summaryRow(label: L.s("options.chain"), value: L.s(opts.chain.localizationKey))
+            summaryRow(label: L.s("options.output"), value: outputDescription(opts.output))
+        }
+        .padding(.vertical, 2)
+    }
+
+    @ViewBuilder private func summaryRow(label: String, value: String) -> some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text(label)
+                .foregroundStyle(.secondary)
+                .frame(minWidth: 100, alignment: .leading)
+            Text(value)
+                .lineLimit(1)
+                .truncationMode(.middle)
             Spacer()
-            Text(L.s("options.timestamp.soon"))
-                .font(.caption)
-                .foregroundStyle(.tertiary)
-                .padding(.horizontal, 6)
-                .padding(.vertical, 2)
-                .background(Color.secondary.opacity(0.1), in: Capsule())
+        }
+        .font(.callout)
+    }
+
+    private func outputDescription(_ output: SignOptions.Output) -> String {
+        switch output {
+        case .adjacent:
+            return L.s("options.output.adjacent")
+        case .folder(let bookmark):
+            if let url = SignOptions.resolve(bookmark: bookmark) {
+                return url.path
+            }
+            return L.s("options.output.folder")
         }
     }
 
-    private func pickOutputFolder() {
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false
-        panel.prompt = L.s("button.choose")
-        if panel.runModal() == .OK, let url = panel.url {
-            if let bookmark = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
-                options.output = .folder(bookmark: bookmark)
-            }
-        } else if !options.output.isAdjacent == false {
-            options.output = .adjacent
+    private func openSettings() {
+        if #available(macOS 14.0, *) {
+            NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+        } else {
+            NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
         }
     }
 
@@ -322,7 +279,8 @@ struct SignView: View {
     // MARK: Actions
 
     private var canSign: Bool {
-        !fileURLs.isEmpty && selectedIdentity != nil && !isSigning
+        !fileURLs.isEmpty && selectedIdentity != nil
+            && profileStore.selected != nil && !isSigning
     }
 
     private func refreshIdentities() {
@@ -330,12 +288,14 @@ struct SignView: View {
     }
 
     private func sign() {
-        guard !fileURLs.isEmpty, let id = selectedIdentity else { return }
+        guard !fileURLs.isEmpty,
+              let id = selectedIdentity,
+              let profile = profileStore.selected else { return }
         isSigning = true
         batchResult = nil
         errorMessage = nil
         let urls = fileURLs
-        let opts = options
+        let opts = profile.options
         DispatchQueue.global(qos: .userInitiated).async {
             let result = SignerCore.sign(urls: urls, identity: id.identity, options: opts)
             DispatchQueue.main.async {
@@ -491,6 +451,16 @@ struct CardStatusRow: View {
 
             Spacer()
 
+            if let selected {
+                Button {
+                    CertificateInspector.show(selected)
+                } label: {
+                    Image(systemName: "info.circle")
+                }
+                .buttonStyle(.borderless)
+                .help(L.s("cert.details"))
+            }
+
             Button(action: onRefresh) {
                 Image(systemName: "arrow.clockwise")
             }
@@ -524,6 +494,15 @@ struct SignerRow: View {
                     .foregroundStyle(signer.statusOK ? .green : .red)
                 Text(signer.commonName).font(.headline)
                 Spacer()
+                if let cert = signer.certificate {
+                    Button {
+                        CertificateInspector.show(cert)
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                    .buttonStyle(.borderless)
+                    .help(L.s("cert.details"))
+                }
             }
             if !signer.issuer.isEmpty {
                 LabeledContent(L.s("verify.issuer")) {

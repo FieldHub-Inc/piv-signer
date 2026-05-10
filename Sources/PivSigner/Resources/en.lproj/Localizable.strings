@@ -10,6 +10,8 @@
 "card.refresh" = "Refresh";
 
 "cert.picker.label" = "Certificate";
+"cert.details" = "Certificate details";
+"cert.details.button" = "Details…";
 
 "drop.sign.title" = "Drop one or more files to sign";
 "drop.verify.title" = "Drop a .p7m file to verify";
@@ -19,11 +21,19 @@
 "file.size" = "Size: %@";
 
 "options.title" = "Signing options";
-"options.preset" = "Preset";
-"options.preset.default" = "Default";
-"options.preset.strict" = "Strict";
-"options.preset.minimal" = "Minimal";
-"options.preset.custom" = "Custom";
+
+"sign.profile.label" = "Profile";
+"sign.profile.edit" = "Edit Profiles…";
+
+"settings.section.profiles" = "Profiles";
+
+"profile.default.name" = "Default";
+"profile.untitled" = "New Profile";
+"profile.empty" = "Select or create a profile";
+"profile.add" = "Add Profile";
+"profile.duplicate" = "Duplicate Profile";
+"profile.delete" = "Delete Profile";
+"profile.name" = "Name";
 "options.format" = "Format";
 "options.format.attached" = "Embedded (.p7m)";
 "options.format.detached" = "Detached (.p7s)";

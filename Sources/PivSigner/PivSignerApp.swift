@@ -38,5 +38,9 @@ struct PivSignerApp: App {
                 }
             }
         }
+
+        Settings {
+            SettingsView()
+        }
     }
 }

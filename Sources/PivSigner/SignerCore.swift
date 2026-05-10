@@ -18,6 +18,7 @@ struct VerifiedSigner: Identifiable {
     let signedAt: Date?
     let trusted: Bool
     let statusOK: Bool
+    let certificate: SecCertificate?
 }
 
 struct VerificationResult {
@@ -227,7 +228,8 @@ enum SignerCore {
                 issuer: issuer,
                 signedAt: date,
                 trusted: trusted,
-                statusOK: ok
+                statusOK: ok,
+                certificate: cert
             ))
         }
 

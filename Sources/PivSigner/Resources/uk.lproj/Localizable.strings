@@ -10,6 +10,8 @@
 "card.refresh" = "Оновити";
 
 "cert.picker.label" = "Сертифікат";
+"cert.details" = "Дані сертифіката";
+"cert.details.button" = "Докладніше…";
 
 "drop.sign.title" = "Перетягніть файли для підпису";
 "drop.verify.title" = "Перетягніть .p7m для перевірки";
@@ -19,11 +21,19 @@
 "file.size" = "Розмір: %@";
 
 "options.title" = "Параметри підпису";
-"options.preset" = "Профіль";
-"options.preset.default" = "За замовчуванням";
-"options.preset.strict" = "Суворий";
-"options.preset.minimal" = "Мінімальний";
-"options.preset.custom" = "Свій";
+
+"sign.profile.label" = "Профіль";
+"sign.profile.edit" = "Змінити профілі…";
+
+"settings.section.profiles" = "Профілі";
+
+"profile.default.name" = "За замовчуванням";
+"profile.untitled" = "Новий профіль";
+"profile.empty" = "Оберіть або створіть профіль";
+"profile.add" = "Додати профіль";
+"profile.duplicate" = "Дублювати профіль";
+"profile.delete" = "Видалити профіль";
+"profile.name" = "Назва";
 "options.format" = "Формат";
 "options.format.attached" = "Вбудований (.p7m)";
 "options.format.detached" = "Окремий (.p7s)";

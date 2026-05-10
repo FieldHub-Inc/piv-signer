@@ -10,6 +10,8 @@
 "card.refresh" = "Обновить";
 
 "cert.picker.label" = "Сертификат";
+"cert.details" = "Сведения о сертификате";
+"cert.details.button" = "Подробнее…";
 
 "drop.sign.title" = "Перетащите файлы для подписи";
 "drop.verify.title" = "Перетащите .p7m для проверки";
@@ -19,11 +21,19 @@
 "file.size" = "Размер: %@";
 
 "options.title" = "Параметры подписи";
-"options.preset" = "Профиль";
-"options.preset.default" = "По умолчанию";
-"options.preset.strict" = "Строгий";
-"options.preset.minimal" = "Минимальный";
-"options.preset.custom" = "Свой";
+
+"sign.profile.label" = "Профиль";
+"sign.profile.edit" = "Изменить профили…";
+
+"settings.section.profiles" = "Профили";
+
+"profile.default.name" = "По умолчанию";
+"profile.untitled" = "Новый профиль";
+"profile.empty" = "Выберите или создайте профиль";
+"profile.add" = "Добавить профиль";
+"profile.duplicate" = "Дублировать профиль";
+"profile.delete" = "Удалить профиль";
+"profile.name" = "Название";
 "options.format" = "Формат";
 "options.format.attached" = "Встроенная (.p7m)";
 "options.format.detached" = "Отдельная (.p7s)";

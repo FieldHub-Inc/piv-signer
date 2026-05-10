@@ -52,7 +52,7 @@ struct SignOptions: Codable, Equatable {
 
     var attached: Bool = true
     var hash: Hash = .sha256
-    var chain: Chain = .intermediates
+    var chain: Chain = .signerOnly
     var output: Output = .adjacent
     var addTimestamp: Bool = false   // RFC 3161 — UI is wired but execution is not implemented yet
 
@@ -79,76 +79,5 @@ struct SignOptions: Codable, Equatable {
             relativeTo: nil,
             bookmarkDataIsStale: &stale
         )
-    }
-}
-
-enum SignPreset: String, CaseIterable, Identifiable {
-    case `default`, strict, minimal, custom
-    var id: String { rawValue }
-
-    var localizationKey: String {
-        switch self {
-        case .default: return "options.preset.default"
-        case .strict: return "options.preset.strict"
-        case .minimal: return "options.preset.minimal"
-        case .custom: return "options.preset.custom"
-        }
-    }
-
-    func options() -> SignOptions {
-        switch self {
-        case .default:
-            return SignOptions(attached: true, hash: .sha256, chain: .intermediates, output: .adjacent)
-        case .strict:
-            return SignOptions(attached: true, hash: .sha512, chain: .full, output: .adjacent)
-        case .minimal:
-            return SignOptions(attached: true, hash: .sha256, chain: .signerOnly, output: .adjacent)
-        case .custom:
-            return PreferenceStore.loadCustomOptions()
-        }
-    }
-
-    static func match(_ options: SignOptions) -> SignPreset {
-        for p in [SignPreset.default, .strict, .minimal] {
-            let preset = p.options()
-            if preset.attached == options.attached
-                && preset.hash == options.hash
-                && preset.chain == options.chain
-                && preset.output.isAdjacent == options.output.isAdjacent
-                && options.output.isAdjacent {
-                return p
-            }
-        }
-        return .custom
-    }
-}
-
-enum PreferenceStore {
-    private static let customKey = "PivSigner.customOptions"
-    private static let presetKey = "PivSigner.selectedPreset"
-
-    static func loadCustomOptions() -> SignOptions {
-        guard let data = UserDefaults.standard.data(forKey: customKey),
-              let opts = try? JSONDecoder().decode(SignOptions.self, from: data)
-        else { return SignPreset.default.options() }
-        return opts
-    }
-
-    static func saveCustomOptions(_ options: SignOptions) {
-        if let data = try? JSONEncoder().encode(options) {
-            UserDefaults.standard.set(data, forKey: customKey)
-        }
-    }
-
-    static func loadSelectedPreset() -> SignPreset {
-        if let raw = UserDefaults.standard.string(forKey: presetKey),
-           let preset = SignPreset(rawValue: raw) {
-            return preset
-        }
-        return .default
-    }
-
-    static func saveSelectedPreset(_ preset: SignPreset) {
-        UserDefaults.standard.set(preset.rawValue, forKey: presetKey)
     }
 }
