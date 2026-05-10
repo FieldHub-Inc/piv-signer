@@ -1,0 +1,61 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj/
+*.xcworkspace/
+
+# Build artifacts
+DerivedData/
+*.app
+*.dmg
+*.zip
+build/
+dist/
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift / SourceKit
+*.swp
+.swift-version
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.iml
+.cursor/
+.claude/
+
+# Signing / secrets
+*.p12
+*.cer
+*.certSigningRequest
+*.mobileprovision
+*.provisionprofile
+.env
+.env.*
+secrets/
+ExportOptions.plist
+
+# Test artifacts the app may produce locally
+*.p7m
+*.p7s
+test*.sig

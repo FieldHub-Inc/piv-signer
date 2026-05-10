@@ -1,0 +1,76 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "Підписати";
+"mode.verify" = "Перевірити";
+
+"card.title.empty" = "Вставте PIV-смарткартку";
+"card.title.ready" = "Смарткартка готова";
+"card.subtitle.empty" = "Сертифікат не знайдено";
+"card.subtitle.validUntil" = "Дійсний до %@";
+"card.refresh" = "Оновити";
+
+"cert.picker.label" = "Сертифікат";
+
+"drop.sign.title" = "Перетягніть файли для підпису";
+"drop.verify.title" = "Перетягніть .p7m для перевірки";
+"drop.subtitle" = "або натисніть, щоб обрати";
+"drop.files.count" = "Обрано файлів: %d";
+
+"file.size" = "Розмір: %@";
+
+"options.title" = "Параметри підпису";
+"options.preset" = "Профіль";
+"options.preset.default" = "За замовчуванням";
+"options.preset.strict" = "Суворий";
+"options.preset.minimal" = "Мінімальний";
+"options.preset.custom" = "Свій";
+"options.format" = "Формат";
+"options.format.attached" = "Вбудований (.p7m)";
+"options.format.detached" = "Окремий (.p7s)";
+"options.hash" = "Геш";
+"options.chain" = "Сертифікати";
+"options.chain.signer" = "Тільки підписант";
+"options.chain.intermediates" = "+ Проміжні";
+"options.chain.full" = "+ Кореневий";
+"options.output" = "Зберігати у";
+"options.output.adjacent" = "Поруч з вихідним";
+"options.output.folder" = "Власна тека…";
+"options.output.folderName" = "Тека: %@";
+"options.timestamp" = "Мітка часу RFC 3161";
+"options.timestamp.soon" = "Згодом";
+
+"button.sign" = "Підписати";
+"button.signing" = "Підписую…";
+"button.verify" = "Перевірити";
+"button.verifying" = "Перевіряю…";
+"button.showInFinder" = "Показати у Finder";
+"button.savePayload" = "Зберегти початковий файл…";
+"button.choose" = "Обрати…";
+"button.clear" = "Очистити";
+
+"result.signed.title" = "Файл підписано";
+"result.signed.subtitle" = "Збережено поруч з оригіналом";
+"result.batch.summary" = "Підписано: %d, помилок: %d";
+"result.batch.allOk" = "Усі %d файлів підписано";
+"result.failure" = "Помилка: %@";
+
+"verify.title.valid" = "Підпис коректний";
+"verify.title.invalid" = "Підпис НЕ коректний";
+"verify.signer" = "Підписант";
+"verify.issuer" = "Видавець";
+"verify.signedAt" = "Час підпису";
+"verify.payloadSize" = "Вміст";
+"verify.signers" = "Підписи";
+"verify.notTrusted" = "Ланцюг довіри не підтверджено";
+
+"error.readFile" = "Не вдалося прочитати файл: %@";
+"error.signing" = "Помилка підпису: %@";
+"error.verifying" = "Помилка перевірки: %@";
+"error.notCMS" = "Файл не є коректним CMS / p7m контейнером";
+"error.noContent" = "У підписі немає вкладеного вмісту";
+
+"menu.openFile" = "Відкрити файл…";
+"menu.about" = "Про програму PIV Signer";
+
+"about.tagline" = "Підпис і перевірка файлів через PIV-смарткартку, нативно для macOS.\nСумісно з YubiKey та іншими PIV-токенами.";
+"about.copyright" = "© 2026 FieldHub Inc. Ліцензія Apache 2.0.";

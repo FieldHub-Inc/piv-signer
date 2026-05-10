@@ -1,0 +1,76 @@
+"app.title" = "PIV Signer";
+
+"mode.sign" = "Sign";
+"mode.verify" = "Verify";
+
+"card.title.empty" = "Insert your PIV smart card";
+"card.title.ready" = "Smart card ready";
+"card.subtitle.empty" = "No certificate detected";
+"card.subtitle.validUntil" = "Valid until %@";
+"card.refresh" = "Refresh";
+
+"cert.picker.label" = "Certificate";
+
+"drop.sign.title" = "Drop one or more files to sign";
+"drop.verify.title" = "Drop a .p7m file to verify";
+"drop.subtitle" = "or click to choose";
+"drop.files.count" = "%d files selected";
+
+"file.size" = "Size: %@";
+
+"options.title" = "Signing options";
+"options.preset" = "Preset";
+"options.preset.default" = "Default";
+"options.preset.strict" = "Strict";
+"options.preset.minimal" = "Minimal";
+"options.preset.custom" = "Custom";
+"options.format" = "Format";
+"options.format.attached" = "Embedded (.p7m)";
+"options.format.detached" = "Detached (.p7s)";
+"options.hash" = "Digest";
+"options.chain" = "Certificates";
+"options.chain.signer" = "Signer only";
+"options.chain.intermediates" = "+ Intermediates";
+"options.chain.full" = "+ Root";
+"options.output" = "Save to";
+"options.output.adjacent" = "Next to source file";
+"options.output.folder" = "Custom folder…";
+"options.output.folderName" = "Folder: %@";
+"options.timestamp" = "RFC 3161 timestamp";
+"options.timestamp.soon" = "Coming soon";
+
+"button.sign" = "Sign";
+"button.signing" = "Signing…";
+"button.verify" = "Verify";
+"button.verifying" = "Verifying…";
+"button.showInFinder" = "Show in Finder";
+"button.savePayload" = "Save Original File…";
+"button.choose" = "Choose…";
+"button.clear" = "Clear";
+
+"result.signed.title" = "File signed";
+"result.signed.subtitle" = "Saved next to the original";
+"result.batch.summary" = "%d signed, %d failed";
+"result.batch.allOk" = "All %d files signed";
+"result.failure" = "Failed: %@";
+
+"verify.title.valid" = "Signature is valid";
+"verify.title.invalid" = "Signature is NOT valid";
+"verify.signer" = "Signer";
+"verify.issuer" = "Issuer";
+"verify.signedAt" = "Signed at";
+"verify.payloadSize" = "Embedded payload";
+"verify.signers" = "Signers";
+"verify.notTrusted" = "Trust chain could not be verified";
+
+"error.readFile" = "Could not read file: %@";
+"error.signing" = "Signing failed: %@";
+"error.verifying" = "Verification failed: %@";
+"error.notCMS" = "This file is not a valid CMS / p7m container";
+"error.noContent" = "No embedded content in the signature";
+
+"menu.openFile" = "Open File…";
+"menu.about" = "About PIV Signer";
+
+"about.tagline" = "Sign and verify files using a PIV smart card, natively on macOS.\nCompatible with YubiKey and other PIV-capable tokens.";
+"about.copyright" = "© 2026 FieldHub Inc. Licensed under Apache 2.0.";
