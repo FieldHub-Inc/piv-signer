@@ -72,5 +72,10 @@
 "menu.openFile" = "Open File…";
 "menu.about" = "About PIV Signer";
 
-"about.tagline" = "Sign and verify files using a PIV smart card, natively on macOS.\nCompatible with YubiKey and other PIV-capable tokens.";
-"about.copyright" = "© 2026 FieldHub Inc. Licensed under Apache 2.0.";
+"about.tagline" = "Sign and verify files using a PIV smart card, natively on macOS. Compatible with YubiKey and other PIV-capable tokens.";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "Version %@";
+"about.author" = "by Viacheslav «Vic» Bukhantsov";
+"about.license" = "License";
+"about.viewSource" = "View Source";
+"about.licenseShort" = "Licensed under the Apache License 2.0";

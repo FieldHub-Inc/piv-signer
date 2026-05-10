@@ -23,7 +23,7 @@ struct ContentView: View {
                 VerifyView()
             }
         }
-        .frame(minWidth: 620, minHeight: 560)
+        .frame(minWidth: 680, idealWidth: 720, minHeight: 720, idealHeight: 780)
         .navigationTitle(L.s("app.title"))
         .toolbar {
             ToolbarItem(placement: .principal) {

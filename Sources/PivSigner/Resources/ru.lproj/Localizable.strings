@@ -72,5 +72,10 @@
 "menu.openFile" = "Открыть файл…";
 "menu.about" = "О программе PIV Signer";
 
-"about.tagline" = "Подпись и проверка файлов через PIV-смарткарту, нативно для macOS.\nСовместимо с YubiKey и другими PIV-токенами.";
-"about.copyright" = "© 2026 FieldHub Inc. Лицензия Apache 2.0.";
+"about.tagline" = "Подпись и проверка файлов через PIV-смарткарту, нативно для macOS. Совместимо с YubiKey и другими PIV-токенами.";
+"about.copyright" = "© 2026 FieldHub Inc.";
+"about.version" = "Версия %@";
+"about.author" = "автор: Viacheslav «Vic» Bukhantsov";
+"about.license" = "Лицензия";
+"about.viewSource" = "Исходный код";
+"about.licenseShort" = "Распространяется по лицензии Apache 2.0";

@@ -28,19 +28,13 @@ struct PivSignerApp: App {
         WindowGroup(L.s("app.title")) {
             ContentView()
         }
-        .windowResizability(.contentSize)
+        .defaultSize(width: 720, height: 780)
+        .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(replacing: .newItem) {}
             CommandGroup(replacing: .appInfo) {
                 Button(L.s("menu.about")) {
-                    let credits = "\(L.s("about.tagline"))\n\n\(L.s("about.copyright"))"
-                    NSApp.orderFrontStandardAboutPanel(options: [
-                        .applicationName: L.s("app.title"),
-                        .credits: NSAttributedString(
-                            string: credits,
-                            attributes: [.font: NSFont.systemFont(ofSize: 11)]
-                        ),
-                    ])
+                    AboutWindowController.shared.show()
                 }
             }
         }
